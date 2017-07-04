@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Number Guesser</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <header>
+    <span class="number">Number</span><span class="guesser">Guesser</span>
+  </header>
+
+<!-- get the user's choice -->
+  <section class="top-section">
+    <input class="guess-input" id="clear" type="text" placeholder="Enter your 'strictly numeric' guess here" size="48">
+    <form>
+      <input class="guess-button" id="button1" type="button" value="Guess" disabled="true">
+      <input class="clear-button" id="button2" type="button" value="Clear" disabled="true">
+
+    </form>
+  </section>
+
+<!--display user's choice-->
+  <section class="mid-section">
+    <p id="your-last-guess-was"></p>
+    <p class="last-guess">Magic</p>
+    <p class="function-output"></p>
+  </section>
+
+<!--restart the game-->
+  <!-- <section class="<startOver> -->
+  <form class="startOver">
+    <input class="reset-button" id="button3" type="button" value="Reset" disabled="true">
+  </form>
+  <!-- </section> -->
+  <script src="scripts.js"></script>
+</body>
+
+</html>
