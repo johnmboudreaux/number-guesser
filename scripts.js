@@ -8,39 +8,23 @@ var lastGuess = document.querySelector(".last-guess");
 var functionOutput = document.querySelector(".function-output");
 var ranNum;
 
-// generate a random number between 0-100 for gameplay
-function genRanNum(){
-  ranNum = Math.floor((Math.random() * 100) + 1);
-}
-
 // generate a random number when the page is loaded or re-loaded
 window.onload = function() {
   genRanNum();
 };
 
+// generates a random number between 0-100 for gameplay
+function genRanNum(){
+  ranNum = Math.floor((Math.random() * 100) + 1);
+}
+
 // event listeners with passed functions following
-guessButton.addEventListener("click", showGuess);
-resetButton.addEventListener("click", reset);
 userGuess.addEventListener("keyup", checkState);
+resetButton.addEventListener("click", reset);
 clearButton.addEventListener("click", eraseText);
+guessButton.addEventListener("click", showGuess);
 
-// display interactive text when a guess is made
-function showGuess() {
-  document.getElementById("your-last-guess-was").innerHTML = "Your last guess was";
-  var userGuessValue = userGuess.value;
-  userGuessValue = parseInt(userGuessValue);
-  lastGuess.innerText = userGuessValue;
-  dataType(userGuessValue);
-  compare(userGuessValue);
-  minMax(userGuessValue);
-}
-
-// reset the game with new random number
-function reset() {
-  location.reload();
-}
-
-// check the state of the text input field
+// keyup event - check the state of the text input field
 function checkState(event) {
   if(userGuess.value === "") {
     disableButtons();
@@ -52,10 +36,34 @@ function checkState(event) {
   }
 }
 
-// erase whatever from the text input field and disable the buttons
+// click event - reset the game with new random number
+function reset() {
+  location.reload();
+}
+
+// click-event - erase whatever from the text input field and disable the buttons
 function eraseText() {
   userGuess.value = "";
   disableButtons();
+}
+
+// click event - display interactive text when a guess is made
+function showGuess() {
+  document.getElementById("your-last-guess-was").innerHTML = "Your last guess was";
+  var userGuessValue = userGuess.value;
+  userGuessValue = parseInt(userGuessValue);
+  lastGuess.innerText = userGuessValue;
+  dataType(userGuessValue);
+  compare(userGuessValue);
+  minMax(userGuessValue);
+}
+
+// check the data type of the users last guess with another dash of sarcasm
+function dataType(userGuessValue) {
+  if(typeof userGuessValue !== "number" || isNaN(userGuessValue))  {
+    lastGuess.innerText = "Really?";
+    alert("you are outside of the required data type. please input a number as the title of this game is 'number guesser'");
+  }
 }
 
 // compare the users guess/datatype to random number with a dash of sarcasm
@@ -80,14 +88,6 @@ function minMax(userGuessValue) {
     alert("that is waaaay too low. please guess again");
 }else if(userGuessValue > 100) {
     alert("that is waaaay too high. please guess again");
-  }
-}
-
-// check the data type of the users last guess with another dash of sarcasm
-function dataType(userGuessValue) {
-  if(typeof userGuessValue !== "number" || isNaN(userGuessValue))  {
-    lastGuess.innerText = "Really?";
-    alert("you are outside of the required data type. please input a number as the title of this game is 'number guesser'");
   }
 }
 
