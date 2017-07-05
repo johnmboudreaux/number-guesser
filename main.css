@@ -26,6 +26,7 @@ header {
   font-size: 50px;
 }
 
+/*button hover styling*/
 .guess-button:hover,
 .clear-button:hover,
 .reset-button:hover {
@@ -33,9 +34,10 @@ header {
   background-color: #eb008b;
 }
 
+/*disabled state styling*/
 input:disabled {
-    background: #d0d2d3;
-    color: #ffffff;
+  background: #d0d2d3;
+  color: #ffffff;
 }
 
 /*top section containing input field, guess button and clear button */
@@ -60,7 +62,8 @@ input:disabled {
   text-align: center;
 }
 
-/*middle section containing a description of user's choice, user's choice, reset button and the output of their choice*/
+/*middle section containing the users last choice, a description of
+user's last choice, reset button and the output of their choice*/
 .mid-section {
   text-align: center;
   color: #404041;
