@@ -11,12 +11,21 @@
 
 <body>
   <header>
+    <div class="num-guess">
     <span class="number">Number</span><span class="guesser">Guesser</span>
+  </div>
   </header>
+<!-- user can pick range -->
+  <p class="range">The current guess range is 0-100</p>
+  <p class="range">Feel free to pick your own range</p>
+  <form class="change-min-max">
+    <input class="input-min" id="inputMin" type="number" value="0">
+    <input class="input-max" id="inputMax" type="number" value="100">
+  </form>
 
 <!-- get the user's choice -->
   <section class="top-section">
-    <input class="guess-input" id="clear" type="text" placeholder="Enter your 'strictly numeric' guess here" size="48">
+    <input class="guess-input" id="clear" type="text" placeholder="Enter your guess here">
     <form>
       <input class="guess-button" id="button1" type="button" value="Guess" disabled="true">
       <input class="clear-button" id="button2" type="button" value="Clear" disabled="true">
@@ -25,16 +34,15 @@
 
 <!--display user's choice with additional text above and below-->
   <section class="mid-section">
-    <p id="your-last-guess-was"></p>
-    <p class="last-guess">Magic</p>
+    <p class="your-last-guess" id="your-last-guess-was"></p>
+    <p class="last-guess">#</p>
     <p class="function-output"></p>
   </section>
 
-<!--restart the game-->
+<!--restart the game or change your min/max-->
   <form class="startOver">
     <input class="reset-button" id="button3" type="button" value="Reset" disabled="true">
   </form>
-
   <script src="scripts.js"></script>
 </body>
 
