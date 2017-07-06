@@ -1,9 +1,9 @@
-// set game global variable
+// set game global variables
 var userGuess = document.querySelector(".guess-input");
 var guessButton = document.querySelector(".guess-button");
 var clearButton = document.querySelector(".clear-button");
 var resetButton = document.querySelector(".reset-button");
-var yourLastGuessWas = document.querySelector(".your-last-guess-was");
+var yourLastGuessWas = document.querySelector(".your-last-guess");
 var lastGuess = document.querySelector(".last-guess");
 var functionOutput = document.querySelector(".function-output");
 var minRange = document.querySelector(".input-min");
@@ -11,10 +11,6 @@ var maxRange = document.querySelector(".input-max");
 var ranNum;
 
 // generate a random number when the page is loaded or re-loaded
-// window.onload = function() {
-//   genRanNum();
-// };
-
 window.onload = function() {
   genRanNum();
   var input = document.getElementById("button1").focus();
@@ -35,10 +31,9 @@ clearButton.addEventListener("click", eraseText);
 
 guessButton.addEventListener("click", function() {
   var min = parseInt(minRange.value);
-      var max = parseInt(maxRange.value);
-        var guess = parseInt(userGuess.value);
-      showGuess();
-    // genRanNum(min, max);
+  var max = parseInt(maxRange.value);
+  var guess = parseInt(userGuess.value);
+  showGuess();
   compare(userGuess);
 });
 
@@ -62,21 +57,25 @@ function reset() {
 
 // click-event - erase whatever from the text input field and disable the buttons
 function eraseText() {
+  console.log(yourLastGuessWas);
   userGuess.value = "";
+  yourLastGuessWas.innerText = "";
+  lastGuess.innerText = "#";
+  functionOutput.innerText = "";
   disableButtons();
 }
 
 // click event - display interactive text when a guess is made
 function showGuess() {
-    document.getElementById("your-last-guess-was").innerHTML = "Your last guess was";
-      var userGuessValue = userGuess.value;
-        userGuessValue = parseInt(userGuessValue);
-      lastGuess.innerText = userGuessValue;
-    dataType(userGuessValue);
+  document.getElementById("your-last-guess-was").innerText = "Your last guess was";
+  var userGuessValue = userGuess.value;
+  userGuessValue = parseInt(userGuessValue);
+  lastGuess.innerText = userGuessValue;
+  dataType(userGuessValue);
   minMax(userGuessValue);
 }
 
-// check the data type of the users last guess with another dash of sarcasm
+// check the data type of the users last guess
 function dataType(userGuessValue) {
   if(typeof userGuessValue !== "number" || isNaN(userGuessValue))  {
     lastGuess.innerText = "...";
@@ -93,7 +92,7 @@ function compare() {
   }else if(userGuessValue   > ranNum){
       functionOutput.innerText = "That is too high";
   }else if(userGuessValue  === ranNum) {
-      document.getElementById("your-last-guess-was").innerText = " Your range will now increase and decrease by 10"
+      document.getElementById("your-last-guess-was").innerText = " Your range will now increase and decrease by 10";
       lastGuess.innerText = "BOOM!";
       functionOutput.innerText = "You guessed it!";
       genRanNum();
