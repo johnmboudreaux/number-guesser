@@ -1,0 +1,24 @@
+{
+  "name": "numGuesser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnmboudreaux/number-guesser.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnmboudreaux/number-guesser/issues"
+  },
+  "homepage": "https://github.com/johnmboudreaux/number-guesser#readme",
+  "dependencies": {
+    "eslint": "^4.4.1"
+  }
+}

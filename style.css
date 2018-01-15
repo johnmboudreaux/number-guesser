@@ -1,0 +1,19 @@
+body {
+  background-color: lightgrey;
+  margin: auto;
+  text-align: center;
+}
+
+header {
+  height: 50px;
+  background-color: aqua;
+
+}
+
+.top-section {
+  margin: 0 auto;
+}
+
+.first-go {
+  width: 300px;
+}
