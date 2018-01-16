@@ -1,10 +1,5 @@
 // set game global variables
-var choiceButton = document.querySelector(".users-choice");
 var userGuess = document.querySelector(".guess-input");
-var clearButton = document.querySelector(".clear-button");
-var resetButton = document.querySelector(".reset-button");
-var yourLastGuessWas = document.querySelector(".your-last-guess");
-var lastGuess = document.querySelector(".last-guess");
 var functionOutput = document.querySelector(".function-output");
 var minRange = document.querySelector(".input-min");
 var maxRange = document.querySelector(".input-max");
@@ -25,7 +20,7 @@ function genRanUserNum(min, max) {
 }
 
 // event listeners with passed functions following
-choiceButton.addEventListener("click", function() {
+$(".users-choice").on("click", function() {
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
   genRanUserNum(min, max);
@@ -33,14 +28,11 @@ choiceButton.addEventListener("click", function() {
 
 userGuess.addEventListener("keyup", checkState);
 
-resetButton.addEventListener("click", reset);
+$(".reset-button").on("click", reset);
 
-clearButton.addEventListener("click", eraseText);
+$(".clear-button").on("click", eraseText);
 
 $(".guess-button").on("click", function() {
-  var min = parseInt(minRange.value);
-  var max = parseInt(maxRange.value);
-  var guess = parseInt(userGuess.value);
   showGuess();
   compare(userGuess);
   $("#clear").val("");
@@ -63,17 +55,17 @@ function reset() {
 // click-event - erase whatever from the text input field and disable the buttons
 function eraseText() {
   userGuess.value = "";
-  yourLastGuessWas.innerText = "";
-  lastGuess.innerText = "#";
+  $(".your-last-guess").text("");
+  $(".last-guess").text("#");
   functionOutput.innerText = "";
   disableButtons();
 }
 
 // click event - display interactive text when a guess is made
 function showGuess() {
-  document.getElementById("your-last-guess-was").innerText = "Your last guess was";
+  $("your-last-guess-was").text("Your last guess was");
   var userGuessValue = parseInt(userGuess.value);
-  lastGuess.innerText = userGuessValue;
+  $(".last-guess").text(userGuessValue);
   dataType(userGuessValue);
   minMax(userGuessValue);
 }
@@ -81,7 +73,7 @@ function showGuess() {
 // check the data type of the users last guess
 function dataType(userGuessValue) {
   if(typeof userGuessValue !== "number" || isNaN(userGuessValue))  {
-    lastGuess.innerText = "...";
+    $(".last-guess").text("...");
     alert("you are outside of the required data type. please input a number as the title of this game is 'number guesser'");
   }
 }
@@ -98,7 +90,7 @@ function compare() {
   }
   else if(userGuessValue  === ranNum) {
       document.getElementById("your-last-guess-was").innerText = " Your guessing range will now decrease and increase by 10";
-      lastGuess.innerText = "BOOM!";
+      $(".last-guess").text("Boom");
       functionOutput.innerText = "You guessed it!";
       genRanNum();
       minRange.value = parseInt(minRange.value)- 10;
@@ -115,16 +107,6 @@ function minMax(userGuessValue) {
 }
 else if(userGuessValue > maxRange.value) {
     alert("that is waaaay too high. please guess again");
-  }
-}
-
-// gives the option to reset the game at anytime once it has begun
-function enableDisableResetButton() {
-  if(lastGuess.value === "undefined" || lastGuess.value === "string" || lastGuess.value === "number") {
-    document.getElementById("button3").removeAttribute("disabled");
-  }
-  else {
-    document.getElementById("button3").setAttribute("disabled", true);
   }
 }
 
