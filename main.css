@@ -135,19 +135,11 @@ input:disabled:hover{
   width: 300px;
   height: 25px;
   display: block;
-||||||| merged common ancestors
-=======
   border: none;
->>>>>>> 9f9d5f3513d416b952c24afd4eefa5c2a5c5d8fb
   text-align: center;
-<<<<<<< HEAD
   margin: 5px auto 25px;
   font-size: 15px;
-||||||| merged common ancestors
-=======
-  font-size: 20px;
   font-weight: 300;
->>>>>>> 9f9d5f3513d416b952c24afd4eefa5c2a5c5d8fb
 }
 
 /*middle section containing the users last choice, a description of
